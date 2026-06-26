@@ -20,12 +20,27 @@ app.get("/", (req, res) => {
 
 app.post("/tryon", async (req, res) => {
   try {
+    const { person_image_url, clothing_image_url } = req.body;
+
+    const result = await fal.subscribe(
+      "fal-ai/image-apps-v2/virtual-try-on",
+      {
+        input: {
+          person_image_url,
+          clothing_image_url
+        },
+        logs: true
+      }
+    );
+
     res.json({
       success: true,
-      message: "AI integration coming next.",
-      data: req.body
+      result: result.data
     });
+
   } catch (err) {
+    console.error(err);
+
     res.status(500).json({
       success: false,
       error: err.message
