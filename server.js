@@ -1,10 +1,15 @@
 const express = require("express");
 const cors = require("cors");
+const { fal } = require("@fal-ai/client");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
+
+fal.config({
+  credentials: process.env.FAL_KEY,
+});
 
 app.get("/", (req, res) => {
   res.json({
