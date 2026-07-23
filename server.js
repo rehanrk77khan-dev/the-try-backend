@@ -67,7 +67,7 @@ app.post(
   "fal-ai/flux-pro/v1/vto",
   {
     input: {
-      prompt: "Analyze the uploaded garment and accurately transfer the entire outfit onto the person, adapting naturally to any pose, body shape, or camera angle. Replace only the clothing while preserving the person's face, identity, hairstyle, body, pose, hands, legs, background, lighting, and all other details exactly. Keep the garment's color, texture, fit, logos, prints, and design identical to the uploaded outfit..",
+      prompt: "Analyze the uploaded garment and accurately transfer the entire outfit onto the person, adapting naturally to any pose, body shape, or camera angle. Replace only the clothing while preserving the person's face, identity, hairstyle, body, pose, hands, legs, background, lighting, and all other details exactly. Keep the garment's color, texture, fit, logos, prints, and design identical to the uploaded outfit.",
       human_image_url: personUrl,
       garment_image_url: clothingUrl,
       output_format: "png"
