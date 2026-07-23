@@ -76,17 +76,6 @@ app.post(
   }
 );
 
-
-    
-      
-
-
-        
-          
-          
-      
-      
-
       res.json({
         success: true,
         image: result.data.images[0].url
