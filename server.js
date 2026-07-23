@@ -67,19 +67,7 @@ app.post(
   "fal-ai/flux-pro/v1/vto",
   {
     input: {
-      prompt: "Replace only the uploaded garment on the person with the uploaded garment image.
-
-Preserve the person's face, identity, skin tone, hairstyle, facial features, expression, body shape, body proportions, pose, camera angle, perspective, hand position, leg position, footwear, accessories, background, lighting, shadows, image quality, and composition exactly as in the original image.
-
-Do not alter the person's age, gender, ethnicity, body size, facial structure, or any other physical characteristics.
-
-Keep the garment fit realistic, accurate, wrinkle-aware, and naturally aligned with the body. Preserve garment colors, logos, prints, embroidery, textures, stitching, fabric type, folds, sleeve length, neckline, buttons, zippers, pockets, and every visible design detail exactly as shown in the uploaded garment image.
-
-Do not generate a new outfit. Do not redesign, restyle, reinterpret, or invent any clothing details. Apply only the uploaded garment.
-
-Do not crop, zoom, rotate, distort, or reposition the person. Keep the entire scene identical except for replacing the garment.
-
-Produce a photorealistic, high-resolution fashion try-on suitable for an e-commerce product preview..",
+      
       human_image_url: personUrl,
       garment_image_url: clothingUrl,
       output_format: "png"
