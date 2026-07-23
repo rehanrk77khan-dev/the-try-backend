@@ -67,7 +67,7 @@ app.post(
   "fal-ai/flux-pro/v1/vto",
   {
     input: {
-      prompt: "Replace only the uploaded garment. Keep the person's face, body, pose, hairstyle, background, lighting, and all other details unchanged. Apply the garment naturally and accurately."
+      prompt: "Replace only the uploaded garment. Keep everything else exactly the same.",
       human_image_url: personUrl,
       garment_image_url: clothingUrl,
       output_format: "png"
