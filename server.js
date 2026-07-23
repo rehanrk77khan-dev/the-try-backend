@@ -67,15 +67,7 @@ app.post(
   "fal-ai/flux-pro/v1/vto",
   {
     input: {
-      prompt: "Analyze the uploaded product image and determine whether it is a garment, one-piece outfit, footwear, jewelry, watch, bag, hat, or other fashion accessory.
-
-Transfer only the uploaded product onto the person while preserving the person's identity, face, hairstyle, skin tone, body shape, body proportions, pose, expression, hands, legs, background, lighting, shadows, camera angle, image quality, and every other detail exactly as in the original image.
-
-If the uploaded product is clothing, replace only the corresponding clothing with the uploaded garment. For one-piece outfits, replace the entire outfit accurately from neckline to hem. Preserve the garment's exact color, fabric, texture, stitching, logos, prints, embroidery, buttons, zippers, pockets, sleeves, neckline, length, and every design detail exactly as shown in the product image.
-
-If the uploaded product is jewelry or an accessory such as a necklace, earrings, bracelet, ring, watch, sunglasses, belt, or bag, do not modify or replace any clothing. Detect the correct body location automatically and place the accessory in the correct position, orientation, scale, and proportion so it appears naturally worn. Preserve the product's exact size, shape, material, color, reflections, gemstones, metal finish, and all design details.
-
-Do not redesign, restyle, invent, remove, crop, reposition, distort, or alter any part of the person or the product. Change only the uploaded product. Produce a photorealistic, high-resolution e-commerce quality result...",
+      prompt: "Analyze the uploaded garment and accurately transfer the entire outfit onto the person, adapting naturally to any pose, body shape, or camera angle. Replace only the clothing while preserving the person's face, identity, hairstyle, body, pose, hands, legs, background, lighting, and all other details exactly. Keep the garment's color, texture, fit, logos, prints, and design identical to the uploaded outfit..",
       human_image_url: personUrl,
       garment_image_url: clothingUrl,
       output_format: "png"
