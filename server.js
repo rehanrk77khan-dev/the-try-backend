@@ -64,16 +64,23 @@ app.post(
       const clothingUrl = await uploadToCloudinary(clothingFile.buffer);
 
       const result = await fal.subscribe(
-  "fal-ai/fashn/tryon/v1.6",
+  "fal-ai/flux-pro/v1/vto",
   {
     input: {
-      model_image: personUrl,
-      garment_image: clothingUrl,
-      mode: "quality"
+      prompt: "The garment should fit naturally while preserving the person's face, hairstyle, body shape, pose, camera angle, background, modest appearance and all visible body proportions. Replace only the uploaded garment.",
+      human_image_url: personUrl,
+      garment_image_url: clothingUrl,
+      output_format: "png"
     },
     logs: true
   }
-);   
+);
+
+
+    
+      
+
+
         
           
           
