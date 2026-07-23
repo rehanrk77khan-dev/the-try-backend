@@ -64,15 +64,21 @@ app.post(
       const clothingUrl = await uploadToCloudinary(clothingFile.buffer);
 
       const result = await fal.subscribe(
-        "fal-ai/image-apps-v2/virtual-try-on",
-        {
-          input: {
-            person_image_url: personUrl,
-            clothing_image_url: clothingUrl
-          },
-          logs: true
-        }
-      );
+  "fal-ai/fashn/tryon/v1.6",
+  {
+    input: {
+      model_image: personUrl,
+      garment_image: clothingUrl,
+      mode: "quality"
+    },
+    logs: true
+  }
+);   
+        
+          
+          
+      
+      
 
       res.json({
         success: true,
