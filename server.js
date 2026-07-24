@@ -67,19 +67,19 @@ app.post(
   "fal-ai/flux-pro/v1/vto",
   {
     input: {
-  prompt: "Transfer the uploaded garment exactly as shown. Replace only the clothing and preserve everything else.",
-  human_image_url: personUrl,
-  garment_image_url: clothingUrl,
-  output_format: "png"    
+      prompt: "Analyze the uploaded garment and transfer it exactly onto the person. Replace only the corresponding clothing. Preserve the garment's exact design, color, texture, fabric, stitching, pattern, logos, shape, length, sleeves, neckline, and fit. Do not add, remove, redesign, or invent any clothing details. Adapt the garment naturally to any body shape, pose, or camera angle while preserving the person's face, identity, body, pose, hands, legs, background, lighting, and every other detail exactly.",
+      human_image_url: personUrl,
+      garment_image_url: clothingUrl,
+      output_format: "png"
     },
     logs: true
   }
 );
-      
-      res.json({
-        success: true,
-        image: result.data.images[0].url
-      });
+
+res.json({
+  success: true,
+  image: result.data.images[0].url
+});
 
     } catch (err) {
 
