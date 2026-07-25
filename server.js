@@ -64,13 +64,12 @@ app.post(
       const clothingUrl = await uploadToCloudinary(clothingFile.buffer);
 
       const result = await fal.subscribe(
-  "fal-ai/flux-pro/v1/vto",
+  "fal-ai/image-apps-v2/virtual-try-on",
   {
     input: {
-      prompt: "Analyze the uploaded garment and transfer it exactly onto the person. Replace only the corresponding clothing. Preserve the garment's exact design, color, texture, fabric, stitching, pattern, logos, shape, length, sleeves, neckline, and fit. Do not add, remove, redesign, or invent any clothing details. Adapt the garment naturally to any body shape, pose, or camera angle while preserving the person's face, identity, body, pose, hands, legs, background, lighting, and every other detail exactly.",
+      prompt: "Transfer the uploaded garment exactly onto the person. Replace only the clothing while preserving the person's face, body, pose, background, lighting, and all other details. Keep the garment's design, color, texture, logos, stitching, pattern, fit, sleeves, neckline, and length exactly as in the uploaded image.",
       human_image_url: personUrl,
-      garment_image_url: clothingUrl,
-      output_format: "png"
+      garment_image_url: clothingUrl
     },
     logs: true
   }
@@ -80,7 +79,6 @@ res.json({
   success: true,
   image: result.data.images[0].url
 });
-
     } catch (err) {
 
       console.error(err);
