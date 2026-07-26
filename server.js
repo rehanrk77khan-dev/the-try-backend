@@ -63,19 +63,19 @@ app.post(
       const personUrl = await uploadToCloudinary(personFile.buffer);
       const clothingUrl = await uploadToCloudinary(clothingFile.buffer);
 
-     const result = await fal.subscribe(
-  "fal-ai/flux-pro/v1/vto",
+     const { fal } = require("@fal-ai/client");
+
+const result = await fal.subscribe(
+  "fal-ai/image-apps-v2/virtual-try-on",
   {
     input: {
-      prompt: "Accurately transfer the entire uploaded garment onto the person, adapting naturally to any pose, body shape, or camera angle. Replace only the clothing while preserving everything else exactly as in the original image.",
       human_image_url: personUrl,
-      garment_image_url: clothingUrl,
-      output_format: "png"
+      garment_image_url: clothingUrl
     },
     logs: true
   }
 );
-      
+
 res.json({
   success: true,
   image: result.data.images[0].url
