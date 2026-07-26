@@ -66,35 +66,50 @@ app.post(
      const { fal } = require("@fal-ai/client");
 
 const result = await fal.subscribe(
-  "fal-ai/image-apps-v2/virtual-try-on",
-  {
-    input: {
-      human_image_url: personUrl,
-      garment_image_url: clothingUrl
-    },
-    logs: true
-  }
+"fal-ai/image-apps-v2/virtual-try-on", "fal-ai/image-apps-v2/virtual-try-on",
+const stream = cloudinary.uploader.upload_stream(
+{
+input: {
+person_image_url,
+clothing_image_url
+},
+logs: true
+folder: "the-try"
+},
+(error, result) => {
+if (error) reject(error);
+else resolve(result.secure_url);
+}
 );
 
-res.json({
-  success: true,
-  image: result.data.images[0].url
+res.json({ success: true, result: result.data }); streamifier.createReadStream(fileBuffer).pipe(stream); 
+
+} catch (err) {
+console.error(err);
 });
-    } catch (err) {
+}
+app.post(
+"/tryon",
+upload.fields([
+{ name: "person", maxCount: 1 },
+{ name: "clothing", maxCount: 1 }
+]),
+async (req, res) => {
 
-      console.error(err);
+res.status(500).json({ success: false, error: err.message }); 
 
-      res.status(500).json({
-        success: false,
-        error: err.message
-      });
+}
+});
+try {
 
-    }
+const personFile = req.files.person[0]; const clothingFile = req.files.clothing[0]; const personUrl = await uploadToCloudinary(personFile.buffer); const clothingUrl = await uploadToCloudinary(clothingFile.buffer); const result = await fal.subscribe( "fal-ai/image-apps-v2/virtual-try-on", "fal-ai/image-apps-v2/virtual-try-on", { input: { person_image_url: personUrl, clothing_image_url: clothingUrl }, logs: true } ); res.json({ success: true, image: result.data.images[0].url }); } catch (err) { console.error(err); res.status(500).json({ success: false, error: err.message }); } 
 
-  }
+}
 );
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+console.log(Server running on port ${PORT});
+console.log(🚀 Server running on port ${PORT});
 });
+
